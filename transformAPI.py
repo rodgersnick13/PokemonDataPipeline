@@ -9,10 +9,9 @@ metrics = PrometheusMetrics(app, path='/metrics')
 @app.route('/')
 def index():
 
-    response = requests.post("http://127.0.0.1:5000/")
-    response = response.to_json(orient='values')
-    result = t.Transform(response)
-    return result
+    response = requests.get("http://127.0.0.1:5000")
+    result = t.Transform(response.json())
+    return result.df.to_json()
 
 if __name__ == '__main__':
     app.run(port=5001)

@@ -1,6 +1,9 @@
-import PipelineSetup as pData
+
 import pandas as pd
 import requests
+import transform as t
+
+t.Transform(pd.read_csv("pokemon.csv"))
 
 path = 'pokemon.csv'
 test = pd.read_csv(path)

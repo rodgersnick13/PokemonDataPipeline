@@ -14,12 +14,11 @@ class Transform():
                         'experience_growth'], axis=1, inplace=True)
         
     def __init__(self, pokemon_csv):
-        csv = pd.read_csv(pokemon_csv)
-        self.df = pd.DataFrame(csv)
+        self.df = pd.DataFrame(pokemon_csv)
         
-        self.df.drop_unneeded_columns()
-        df = df.dropna(subset=['height_m'])
-        df['is_legendary'] = df['is_legendary'].astype(bool)
-        df = df[df['capture_rate'] != '30 (Meteorite)255 (Core)']
-        df['capture_rate'] = df['capture_rate'].astype(int)
+        self.drop_unneeded_columns()
+        self.df.dropna(subset=['height_m'], inplace=True)
+        self.df['is_legendary'] = self.df['is_legendary'].astype(bool)
+        self.df = self.df[self.df['capture_rate'] != '30 (Meteorite)255 (Core)']
+        self.df['capture_rate'] = self.df['capture_rate'].astype(int)
             
