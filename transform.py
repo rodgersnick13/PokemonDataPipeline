@@ -1,7 +1,7 @@
 import pandas as pd
 
 class Transform():
-    df: pd.DateFrame
+    df: pd.DataFrame
             
     def drop_unneeded_columns(self):
         self.df.drop(['against_bug', 'against_bug', 'against_dark', 'against_dragon',
