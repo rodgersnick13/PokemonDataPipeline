@@ -2,6 +2,9 @@ import pandas as pd
 
 class Transform():
     df: pd.DataFrame
+
+    def write_cleaned_csv(self):
+        self.df.to_csv("pokemon_cleaned.csv", index=False)
             
     def drop_unneeded_columns(self):
         self.df.drop(['against_bug', 'against_bug', 'against_dark', 'against_dragon',
@@ -19,6 +22,8 @@ class Transform():
         self.drop_unneeded_columns()
         self.df.dropna(subset=['height_m'], inplace=True)
         self.df['is_legendary'] = self.df['is_legendary'].astype(bool)
-        self.df = self.df[self.df['capture_rate'] != '30 (Meteorite)255 (Core)']
-        self.df['capture_rate'] = self.df['capture_rate'].astype(int)
+        #self.df = self.df[self.df['capture_rate'] != '30 (Meteorite)255 (Core)']
+        #self.df['capture_rate'] = self.df['capture_rate'].astype(int)
+
+        self.write_cleaned_csv()
             
